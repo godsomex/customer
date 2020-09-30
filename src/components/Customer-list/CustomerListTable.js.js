@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Container, Table } from "./styles/CustomerListTable";
 
 export function CustomerListTable({ children, ...restProps }) {
@@ -12,8 +13,8 @@ export function CustomerListTable({ children, ...restProps }) {
           <div className="col col-2">Customer Name</div>
           <div className="col col-3">Birth Day</div>
           <div className="col col-4">Gender</div>
-          <div className="col col-4">Value</div>
           <div className="col col-4">Last Contact</div>
+          <div className="col col-4">Value</div>
         </li>
 
         {customers?.map(
