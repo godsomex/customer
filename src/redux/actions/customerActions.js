@@ -10,6 +10,7 @@ import {
 const GET = "GET";
 const POST = "POST";
 const DELETE = "DELETE";
+const PATCH = "PATCH";
 
 //GET  CUSTOMERS
 export const getCustomers = () => async (dispatch) => {
@@ -40,7 +41,7 @@ export const setLoading = () => {
   };
 };
 
-// Get CUSTOMER DETAILS
+// GET CUSTOMER DETAILS
 export const getCustomer = (id) => async (dispatch) => {
   try {
     const result = await fetch(`http://localhost:9000/${id}`, {
@@ -64,7 +65,6 @@ export const getCustomer = (id) => async (dispatch) => {
 // Add customers
 export const addCustomer = (formData) => async (dispatch) => {
   const body = JSON.stringify(formData);
-  // Headers
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export const addCustomer = (formData) => async (dispatch) => {
   }
 };
 
-//Delete Customers
+//DELETE CUSTOMER
 export const deleteCustomer = (id) => async (dispatch) => {
   try {
     const result = await fetch(`http://localhost:9000/${id}`, {
@@ -103,6 +103,33 @@ export const deleteCustomer = (id) => async (dispatch) => {
       type: DELETE_CUSTOMER,
       payload: data,
     });
+  } catch (err) {
+    dispatch({
+      type: CUSTOMER_ERROR,
+      payload: err.response,
+    });
+  }
+};
+
+//UPATE CUSTOMER
+export const updateCustomer = (id, formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: PATCH,
+    body: JSON.stringify(formData),
+  };
+
+  try {
+    const result = await fetch(`http://localhost:9000/${id}`, config);
+
+    const data = await result.json();
+
+    // dispatch({
+    //   type: UPFATE_CUSTOMER,
+    //   payload: data,
+    // });
   } catch (err) {
     dispatch({
       type: CUSTOMER_ERROR,
