@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import styled from "@emotion/styled/macro";
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { addCustomer } from "../../redux/actions/customerActions";
-function AddCustomerForm() {
+import { Container, Title } from "./styles/AddCustomerFomr";
+
+function AddCustomerForm({ setIsAdd }) {
   const dispatch = useDispatch();
   const [customerDetails, setCustomerDetails] = useState({
     CustomerName: "",
@@ -35,6 +36,7 @@ function AddCustomerForm() {
         last_contact: lastContact,
       })
     );
+    setIsAdd(false);
   };
 
   const handleChange = (event) => {
@@ -94,14 +96,3 @@ function AddCustomerForm() {
 }
 
 export default AddCustomerForm;
-
-export const Container = styled.div`
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-`;
-
-export const Title = styled.h2`
-  margin: 10px 0;
-`;

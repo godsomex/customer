@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import AddCustomerForm from "../components/add/AddCustomerForm";
@@ -11,23 +11,25 @@ import { getCustomers } from "../redux/actions/customerActions";
 function Home() {
   const customer = useSelector((state) => state.customer);
   const dispatch = useDispatch();
+  const [isAdd, setIsAdd] = useState(false);
 
   useEffect(() => {
     dispatch(getCustomers());
-  }, []);
+  }, [dispatch, isAdd]);
 
   return (
     <>
       <Wrapper>
         <Header>
           <Header.Image src={logo} alt="customer" />
-          <Header.Button>Add </Header.Button>
+          <Header.Button onClick={() => setIsAdd(true)}>Add </Header.Button>
         </Header>
       </Wrapper>
-
-      <Card>
-        <AddCustomerForm />
-      </Card>
+      {isAdd ? (
+        <Card>
+          <AddCustomerForm setIsAdd={setIsAdd} />
+        </Card>
+      ) : null}
       <Card>
         <CustomerListTable customer={customer} />
       </Card>

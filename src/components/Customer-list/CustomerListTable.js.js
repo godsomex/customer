@@ -5,7 +5,6 @@ import { Container, Table } from "./styles/CustomerListTable";
 
 export function CustomerListTable({ children, ...restProps }) {
   const { customers } = restProps.customer;
-
   const history = useHistory();
 
   return (

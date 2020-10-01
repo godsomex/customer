@@ -19,7 +19,7 @@ function Details() {
 
   useEffect(() => {
     dispatch(getCustomer(id));
-  }, []);
+  }, [dispatch]);
 
   const handleDelete = () => {
     dispatch(deleteCustomer(id));

@@ -12,7 +12,6 @@ function createHandlers({ Customer }) {
   const getCustomer = async (req, res) => {
     try {
       const customer = await Customer.findById(req.params.id);
-
       if (!customer) {
         return res.status(404).send({ msg: "Customer not found" });
       }
@@ -55,18 +54,23 @@ function createHandlers({ Customer }) {
       fields.birthday = new Date(req.body.birthday).toISOString();
     if (req.body.value) fields.value = req.body.value;
 
-    const customer = await Customer.findOneAndUpdate(
-      { _id: id },
-      { $set: fields },
-      {
-        new: true,
-      }
-    ).exec();
+    try {
+      const customer = await Customer.findOneAndUpdate(
+        { _id: id },
+        { $set: fields },
+        {
+          new: true,
+        }
+      ).exec();
 
-    res.status(200).send({
-      message: "item updated",
-      customer,
-    });
+      res.status(200).send({
+        message: "item updated",
+        customer,
+      });
+    } catch (error) {
+      console.log("Error occurred: ", error);
+      res.status(500).send(error.message);
+    }
   };
 
   const deleteCustomers = async (req, res) => {

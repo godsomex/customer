@@ -30,7 +30,7 @@ export const getCustomers = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: CUSTOMER_ERROR,
-      payload: err.response.data,
+      payload: err.response,
     });
   }
 };
@@ -80,8 +80,6 @@ export const addCustomer = (formData) => async (dispatch) => {
       type: ADD_CUSTOMER_SUCCESS,
       payload: data,
     });
-
-    getCustomers();
   } catch (err) {
     dispatch({
       type: CUSTOMER_ERROR,
@@ -125,11 +123,6 @@ export const updateCustomer = (id, formData) => async (dispatch) => {
     const result = await fetch(`http://localhost:9000/${id}`, config);
 
     const data = await result.json();
-
-    // dispatch({
-    //   type: UPFATE_CUSTOMER,
-    //   payload: data,
-    // });
   } catch (err) {
     dispatch({
       type: CUSTOMER_ERROR,
