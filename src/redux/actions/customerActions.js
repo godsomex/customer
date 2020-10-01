@@ -4,10 +4,12 @@ import {
   SET_LOADING,
   CUSTOMER_ERROR,
   ADD_CUSTOMER_SUCCESS,
+  DELETE_CUSTOMER,
 } from "./constants";
 
 const GET = "GET";
 const POST = "POST";
+const DELETE = "DELETE";
 
 //GET  CUSTOMERS
 export const getCustomers = () => async (dispatch) => {
@@ -59,6 +61,7 @@ export const getCustomer = (id) => async (dispatch) => {
   }
 };
 
+// Add customers
 export const addCustomer = (formData) => async (dispatch) => {
   const body = JSON.stringify(formData);
   // Headers
@@ -79,6 +82,27 @@ export const addCustomer = (formData) => async (dispatch) => {
     });
 
     getCustomers();
+  } catch (err) {
+    dispatch({
+      type: CUSTOMER_ERROR,
+      payload: err.response,
+    });
+  }
+};
+
+//Delete Customers
+export const deleteCustomer = (id) => async (dispatch) => {
+  try {
+    const result = await fetch(`http://localhost:9000/${id}`, {
+      method: DELETE,
+    });
+
+    const data = await result.json();
+
+    dispatch({
+      type: DELETE_CUSTOMER,
+      payload: data,
+    });
   } catch (err) {
     dispatch({
       type: CUSTOMER_ERROR,
