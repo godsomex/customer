@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 12.18.4
+
+jobs:
+  include:
+    - stage: test
+      script: yarn test
+
+stages:
+  - test
