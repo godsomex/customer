@@ -1,0 +1,72 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**
+
+# Generated files
+.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+/reports
+junit.xml
+
+# production
+/build
+
+# jsdocs
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+codeship.aes
+*.env.decrypted
+*.decrypted
+
+.yarnrc
+
+# VisualStudioCode #
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# Cypress screenshots
+cypress/screenshots
+cypress.env.json
+
+# Logs (eg. pacts)
+/logs
+
+/config
