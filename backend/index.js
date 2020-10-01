@@ -18,7 +18,10 @@ mongoose
     useCreateIndex: true,
   }) // Adding new mongo url parser
   .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log(err);
+    process.exit(1);
+  });
 
 const {
   getCustomer,
