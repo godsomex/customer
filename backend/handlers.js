@@ -30,8 +30,8 @@ function createHandlers({ Customer }) {
       const newCustomer = new Customer({
         name,
         gender,
-        last_contact,
-        birthday,
+        last_contact: new Date(last_contact).toISOString(),
+        birthday: new Date(birthday).toISOString(),
         value,
       });
 
@@ -49,8 +49,9 @@ function createHandlers({ Customer }) {
 
     if (req.body.name) fields.name = req.body.name;
     if (req.body.gender) fields.gender = req.body.gender;
-    if (req.body.last_contact) fields.last_contact = req.body.last_contact;
-    if (req.body.birthday) fields.birthday = req.body.birthday;
+    if (req.body.last_contact)
+      fields.last_contact = Date(req.body.last_contact);
+    if (req.body.birthday) fields.birthday = Date(req.body.birthday);
     if (req.body.value) fields.value = req.body.value;
 
     const customer = await Customer.findOneAndUpdate(

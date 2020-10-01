@@ -1,23 +1,40 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "@emotion/styled/macro";
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
-
+import { addCustomer } from "../../redux/actions/customerActions";
 function AddCustomerForm() {
+  const dispatch = useDispatch();
   const [customerDetails, setCustomerDetails] = useState({
     CustomerName: "",
-    bday: "",
+    birthday: "",
     gender: "",
+    lastContact: "",
     customerLifetimeValue: "",
   });
 
-  const { CustomerName, bday, gender, customerLifetimeValue } = customerDetails;
+  const {
+    CustomerName,
+    birthday,
+    gender,
+    lastContact,
+    customerLifetimeValue,
+  } = customerDetails;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log({ CustomerName, bday, gender, customerLifetimeValue });
+    dispatch(
+      addCustomer({
+        name: CustomerName,
+        birthday,
+        gender,
+        value: customerLifetimeValue,
+        last_contact: lastContact,
+      })
+    );
   };
 
   const handleChange = (event) => {
@@ -40,8 +57,8 @@ function AddCustomerForm() {
         />
         <FormInput
           type="text"
-          name="bday"
-          value={bday}
+          name="birthday"
+          value={birthday}
           onChange={handleChange}
           label="Birth Day"
           required
@@ -56,10 +73,18 @@ function AddCustomerForm() {
         />
         <FormInput
           type="text"
+          name="lastContact"
+          value={lastContact}
+          onChange={handleChange}
+          label="Last Contact"
+          required
+        />
+        <FormInput
+          type="number"
           name="customerLifetimeValue"
           value={customerLifetimeValue}
           onChange={handleChange}
-          label="Life Time Value"
+          label="customer Lifetime Value"
           required
         />
         <CustomButton type="submit">ADD</CustomButton>
