@@ -1,9 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { Container, Table } from "./styles/CustomerListTable";
 
 export function CustomerListTable({ children, ...restProps }) {
-  const { list: customers } = restProps.customer;
+  const { customers } = restProps.customer;
+
+  const history = useHistory();
 
   return (
     <Container {...restProps}>
@@ -18,7 +21,11 @@ export function CustomerListTable({ children, ...restProps }) {
 
         {customers?.map(
           ({ _id, value, name, birthday, gender, last_contact }) => (
-            <li className="table-row" key={_id}>
+            <li
+              className="table-row"
+              key={_id}
+              onClick={() => history.push(`/details/${_id}`)}
+            >
               <div className="col col-2" data-label="Customer Name">
                 {`${name}`}
               </div>

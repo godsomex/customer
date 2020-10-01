@@ -21,6 +21,7 @@ mongoose
   .catch((err) => console.log(err));
 
 const {
+  getCustomer,
   getCustomers,
   postCustomers,
   updateCustomers,
@@ -34,6 +35,7 @@ app.use(jsonParser);
 app.use(urlencodedParser);
 
 app.get("/", getCustomers);
+app.get("/:id", getCustomer);
 app.post("/", postCustomers);
 app.patch("/:id", updateCustomers);
 app.delete("/:id", deleteCustomers);

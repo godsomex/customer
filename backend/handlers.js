@@ -9,6 +9,21 @@ function createHandlers({ Customer }) {
     }
   };
 
+  const getCustomer = async (req, res) => {
+    try {
+      const customer = await Customer.findById(req.params.id);
+
+      if (!customer) {
+        return res.status(404).send({ msg: "Customer not found" });
+      }
+
+      res.json(customer);
+    } catch (error) {
+      console.log("Error occurred: ", error);
+      res.status(500).send(error.message);
+    }
+  };
+
   const postCustomers = async (req, res) => {
     const { name, gender, last_contact, birthday, value } = req.body;
     try {
@@ -64,7 +79,13 @@ function createHandlers({ Customer }) {
     }
   };
 
-  return { getCustomers, postCustomers, updateCustomers, deleteCustomers };
+  return {
+    getCustomers,
+    getCustomer,
+    postCustomers,
+    updateCustomers,
+    deleteCustomers,
+  };
 }
 
 module.exports = createHandlers;
