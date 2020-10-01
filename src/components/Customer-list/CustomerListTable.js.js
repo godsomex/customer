@@ -9,7 +9,6 @@ export function CustomerListTable({ children, ...restProps }) {
     <Container {...restProps}>
       <Table>
         <li className="table-header">
-          <div className="col col-1"> Id</div>
           <div className="col col-2">Customer Name</div>
           <div className="col col-3">Birth Day</div>
           <div className="col col-4">Gender</div>
@@ -18,20 +17,10 @@ export function CustomerListTable({ children, ...restProps }) {
         </li>
 
         {customers?.map(
-          ({
-            customerID,
-            name,
-            birthday,
-            gender,
-            lastContact,
-            customerLifetimeValue,
-          }) => (
-            <li className="table-row">
-              <div className="col col-1" data-label=" Id">
-                {customerID}
-              </div>
+          ({ _id, value, name, birthday, gender, last_contact }) => (
+            <li className="table-row" key={_id}>
               <div className="col col-2" data-label="Customer Name">
-                {`${name.first} ${name.last}`}
+                {`${name}`}
               </div>
               <div className="col col-3" data-label="Bday">
                 {birthday}
@@ -40,10 +29,10 @@ export function CustomerListTable({ children, ...restProps }) {
                 {gender}
               </div>
               <div className="col col-4" data-label="last contact">
-                {lastContact}
+                {last_contact}
               </div>
               <div className="col col-4" data-label="Value">
-                {customerLifetimeValue}
+                {value}
               </div>
             </li>
           )

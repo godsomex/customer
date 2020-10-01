@@ -1,1 +1,3 @@
 export const GET_CUSTOMER = "GET_CUSTOMER";
+export const CUSTOMER_ERROR = "CUSTOMER_ERROR";
+export const SET_LOADING = "SET_LOADING";

@@ -1,13 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import AddCustomerForm from "../components/add/AddCustomerForm";
 import { CustomerListTable } from "../components/Customer-list";
 import { Card, Header, Wrapper } from "../components";
 import logo from "../logo.svg";
 
+import { getCustomer } from "../redux/actions/customerActions";
 function Home() {
   const customer = useSelector((state) => state.customer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCustomer());
+  }, []);
 
   return (
     <>
