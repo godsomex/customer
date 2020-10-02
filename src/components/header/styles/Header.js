@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
 
 export const Container = styled.section`
   display: flex;
@@ -25,6 +25,7 @@ export const Button = styled.button`
 `;
 
 export const Image = styled.img`
+  cursor: pointer;
   height: 36px;
   width: 134px;
 `;

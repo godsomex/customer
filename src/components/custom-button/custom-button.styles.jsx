@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 const buttonStyles = css`
   background-color: black;
   color: white;
-  border: none;
+  border: 1px solid red;
 
   &:hover {
     background-color: white;
