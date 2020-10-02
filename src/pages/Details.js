@@ -28,8 +28,6 @@ function Details() {
 
   const handleEdit = () => {
     setIsEditing(true);
-    // dispatch(deleteCustomer(id));
-    // history.push("/");
   };
 
   return (
@@ -44,9 +42,14 @@ function Details() {
           <Card.Pane>
             <Card.Name>{name}</Card.Name>
             <Card.Gender>{gender}</Card.Gender>
-            <Card.Bday>{birthday}</Card.Bday>
+            <Card.Bday>
+              {birthday && new Date(birthday).toLocaleDateString("en-US")}
+            </Card.Bday>
             <Card.Value>{value}</Card.Value>
-            <Card.Value>{last_contact}</Card.Value>
+            <Card.Value>
+              {last_contact &&
+                new Date(last_contact).toLocaleDateString("en-US")}
+            </Card.Value>
           </Card.Pane>
         </Card>
       )}

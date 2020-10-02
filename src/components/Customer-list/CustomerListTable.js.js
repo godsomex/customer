@@ -29,13 +29,14 @@ export function CustomerListTable({ children, ...restProps }) {
                 {`${name}`}
               </div>
               <div className="col col-3" data-label="Bday">
-                {birthday}
+                {birthday && new Date(birthday).toLocaleDateString("en-US")}
               </div>
               <div className="col col-4" data-label="Gender">
                 {gender}
               </div>
               <div className="col col-4" data-label="last contact">
-                {last_contact}
+                {last_contact &&
+                  new Date(last_contact).toLocaleDateString("en-US")}
               </div>
               <div className="col col-4" data-label="Value">
                 {value}

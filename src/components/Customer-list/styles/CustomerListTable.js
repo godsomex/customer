@@ -25,6 +25,7 @@ export const Table = styled.ul`
     letter-spacing: 0.03em;
   }
   .table-row {
+    cursor: pointer;
     background-color: #ffffff;
     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
   }
