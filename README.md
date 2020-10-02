@@ -1,8 +1,11 @@
-## AUTO1 COOKIE BACKERY App
+
+## CUSTOMER MGT APP
 
 # Development
 
+
 - Be sure to have Yarn package manager [installed](https://classic.yarnpkg.com/en/docs/install/#mac-stable) on your machine
+
 
 - `cd backend`
 - `yarn post-install`
