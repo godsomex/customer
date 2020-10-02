@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -63,7 +63,7 @@ function UpdateCustomerForm({ details }) {
         <FormInput
           type="text"
           name="birthday"
-          value={birthday}
+          value={new Date(birthday).toLocaleDateString("en-US")}
           onChange={handleChange}
           label="Birth Day"
           required
@@ -79,7 +79,7 @@ function UpdateCustomerForm({ details }) {
         <FormInput
           type="text"
           name="lastContact"
-          value={lastContact}
+          value={new Date(lastContact).toLocaleDateString("en-US")}
           onChange={handleChange}
           label="Last Contact"
           required

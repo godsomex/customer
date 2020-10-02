@@ -68,5 +68,3 @@ cypress.env.json
 
 # Logs (eg. pacts)
 /logs
-
-/config
