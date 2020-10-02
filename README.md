@@ -2,8 +2,8 @@
 
 # Development
 
-- Be sure to have Yarn package manager [installed](https://classic.yarnpkg.com/en/docs/install/#mac-stable) on your machine
-
+- Be sure to have Yarn package manager [installed](https://classic.yarnpkg.com/en/docs/install/#mac-stable) on your machine 
+- Change Database config password in backend/config/default.json.
 - `cd backend`
 - `yarn post-install`
 - `yarn dev`
