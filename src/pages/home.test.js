@@ -4,8 +4,8 @@ import configureMockStore from "redux-mock-store";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-import Home from "../pages/home";
-import { initialState } from "./__mock__";
+import Home from "./home";
+import { initialState } from "../__mock__";
 
 const mockStore = configureMockStore([thunk]);
 const store = mockStore(initialState);
